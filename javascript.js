@@ -24,7 +24,8 @@ const txtuser = {
     num:0,
     x:canvas.width/4,
     y:canvas.height/5,
-    txt:""
+    txt:"",
+    XC:110
 }
 // txt computer OBJ
 const txtcom = {
@@ -32,7 +33,8 @@ const txtcom = {
     num:0,
     x:canvas.width/1.5,
     y:canvas.height/2 - 120,
-    txt:""
+    txt:"",
+    XC:350
 }
 //paddle user OBJ
 const paduser = {
@@ -75,11 +77,11 @@ function drawCircle(x,y,r,color){
     cs.fill();
 }
 //text
-function drawText(num,txt,x,y,color){
+function drawText(num,txt,x,y,color,XC){
     cs.fillStyle = color;
     cs.font = "45px fantasy";
     cs.fillText(num,x,y)
-    cs.fillText(txt,400,200)
+    cs.fillText(txt,XC,200)
 }
 //paddle
 function paddleNet(x,y,w,h,color){
@@ -88,12 +90,13 @@ function paddleNet(x,y,w,h,color){
         y+=20
     }
 }
+
 //rendering the game , collision detection
 function render(){
     drawRect(0, 0, Rect.x, Rect.y, Rect.color);
     drawCircle(circle.x,circle.y,circle.r,circle.color);
-    drawText(txtuser.num,txtuser.txt,txtuser.x,txtuser.y,txtuser.color);
-    drawText(txtcom.num,txtcom.txt,txtcom.x,txtcom.y,txtcom.color);
+    drawText(txtuser.num,txtuser.txt,txtuser.x,txtuser.y,txtuser.color,txtuser.XC);
+    drawText(txtcom.num,txtcom.txt,txtcom.x,txtcom.y,txtcom.color,txtcom.XC);
     drawRect(paduser.x,paduser.y,paduser.w,paduser.h,paduser.color);
     drawRect(padcom.x,padcom.y,padcom.w,padcom.h,padcom.color);
     paddleNet(net.x,net.y,net.w,net.h,net.color)
